@@ -66,7 +66,7 @@ int main(){
 	}
 	if(1){// iterator test
 		CTree<int> l;
-		l.Add("s",5), l.Add("f",6), l.Add("e",7), l.Add("h",8), l.Add("fdkjvhb2",9), l.Add("sadjknvc",10)
+		l.Add("s",5); l.Add("f",6); l.Add("e",7); l.Add("h",8); l.Add("fdkjvhb2",9); l.Add("sadjknvc",10); l.Add("sbdvjks",11); l.Add("fvaer",12); l.Add("ewvgwe",13); l.Add("regreh",14); l.Add("fdkjerg",15);
 		l.Add("d", 4); l.Add("b", 2); l.Add("a", 1); l.Add("c", 3);
 		for(auto it=l.begin(); it!=l.end(); ++it){
 			cout << *it << " ";
