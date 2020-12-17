@@ -6,18 +6,33 @@ using namespace std;
 template<class T> class CTree{
 public:
 	class CNode{
-		void Clean(){delete [] key; SetZero();}
+		void Clean(){
+			delete [] key;
+			SetZero();}
 		void SetZero(){par=left=right=NULL;}
 	public:
 		CNode *par, *left, *right;
 		T v;
 		const char *key;
-		CNode(){SetZero();}
-		CNode(const char *key, const T &v, typename CTree::CNode *par){this->key=new char[strlen(key)+1];memcpy(const_cast<char*>(this->key),key, strlen(key)+1); this->par=par; this->v=v; left=right=NULL;}
-		CNode(const char *key){this->key=new char[strlen(key)+1];memcpy(const_cast<char*>(this->key),key, strlen(key)+1); SetZero();}
-		~CNode(){Clean();}
-		T &GetV(){return v;}
-		const char* &GetKey(){return key;}
+		CNode(){
+			SetZero();
+		}
+		CNode(const char *key, const T &v, typename CTree::CNode *par){
+			this->key=new char[strlen(key)+1];
+			memcpy(const_cast<char*>(this->key),key, strlen(key)+1);
+			this->par=par; this->v=v; left=right=NULL;
+		}
+		CNode(const char *key){
+			this->key=new char[strlen(key)+1];
+			memcpy(const_cast<char*>(this->key),key, strlen(key)+1);
+			SetZero();
+		}
+		~CNode(){
+			Clean();}
+		T &GetV(){
+			return v;}
+		const char* &GetKey(){
+			return key;}
 		bool operator<(const CNode &rhs)const;
 		bool operator>(const CNode &rhs)const;
 		bool operator==(const CNode &rhs)const;
@@ -29,13 +44,20 @@ public:
 		typename CTree<T>::CNode *n; CTree<T> *t;
 	public:
 
-		iterator(typename CTree<T>::CNode *n, CTree<T> *t){this->n=n; this->t=t;}
-		iterator(const iterator &b){this->n=b.n; this->t=b.t;}
-		const T &operator*(){return n->v;}
-		void operator++(){n=t->Next(n);}
-		void operator++(int){n=t->Next(n);}
-		bool operator==(const iterator &rhs){return n==rhs.n;}
-		bool operator!=(const iterator &rhs){return n!=rhs.n;}
+		iterator(typename CTree<T>::CNode *n, CTree<T> *t){
+			this->n=n; this->t=t;}
+		iterator(const iterator &b){
+			this->n=b.n; this->t=b.t;}
+		const T &operator*(){
+			return n->v;}
+		void operator++(){
+			n=t->Next(n);}
+		void operator++(int){
+			n=t->Next(n);}
+		bool operator==(const iterator &rhs){
+			return n==rhs.n;}
+		bool operator!=(const iterator &rhs){
+			return n!=rhs.n;}
 		friend class CTree<T>;
 	};
 
@@ -51,8 +73,10 @@ public:
 	void Clean(){while(!Delete(root)); len=0;}
 
 	bool IsEmpty(){return root==NULL;};
-	bool IsLeft(typename CTree<T>::CNode *rhs){if(rhs!=NULL && rhs->par!=NULL && rhs->par->left==rhs)return true; return false;}
-	bool IsRight(typename CTree<T>::CNode *rhs){if(rhs!=NULL && rhs->par!=NULL && rhs->par->right==rhs)return true; return false;}
+	bool IsLeft(typename CTree<T>::CNode *rhs){
+		if(rhs!=NULL && rhs->par!=NULL && rhs->par->left==rhs)return true; return false;}
+	bool IsRight(typename CTree<T>::CNode *rhs){
+		if(rhs!=NULL && rhs->par!=NULL && rhs->par->right==rhs)return true; return false;}
 
 	bool Delete(const char * rhs){typename CTree<T>::CNode *n=Find(rhs); if(n==NULL) return true; return Delete(n);}
 	bool Delete(typename CTree<T>::CNode *rhs);
