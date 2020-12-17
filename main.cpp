@@ -1,6 +1,24 @@
 #include<iostream>
 #include"CTree.h"
 using namespace std;
+bool Autotest(){
+l.Add("d", 4);l.Add("b", 2);l.Add("c", 3);l.Add("a", 1);
+if(l.GetLen()!=4){
+return false;
+}
+int k = 0;
+for(auto it=l.begin(); it!=l.end(); ++it){
+                if (*it < k){
+		return false;
+		}
+		
+	        k = *it;
+	        
+	
+	}
+return true;
+ 	
+}
 int main(){
 	if(1){// Constructor and destructor check
 		CTree<int> l;
